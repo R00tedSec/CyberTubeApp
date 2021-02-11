@@ -4,6 +4,6 @@
 - Alejandro Bermejo [@r00tedsec](https://twitter.com/R00tedSec)
 - Lucía [@QwertyStack](https://twitter.com/qwertystack)
 - Adrián Álvarez 
-- [G0nz4lo-4lvarez-H3rv4s](https://github.com/G0nz4lo-4lvarez-H3rv4s)
+- Gonzalo Álvarez Hervás [G0nz4lo-4lvarez-H3rv4s](https://github.com/G0nz4lo-4lvarez-H3rv4s)
 - Álvaro Borreguero
 - Marcos Bonilla
