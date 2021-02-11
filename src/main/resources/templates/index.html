@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - CyberTube</title>
+    <meta name="description" content="First Hacking Youtube">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive-1" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <img src="/img/logo.png" style="width: 163px;">
+            <div class="collapse navbar-collapse text-uppercase" id="navbarResponsive-1" style="font-family: Aldrich, sans-serif;">
+                <ul class="nav navbar-nav ml-auto" style="color: rgb(255,255,255);">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')} or ${check} == true" href="/admin" style="color: rgb(255,255,255);">Admin Page</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" href="/profile" style="color: rgb(255,255,255);">Profile</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#videos" style="color: rgb(255,255,255);">Videos</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#articles" style="color: rgb(255,255,255);">aRTICLES</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="padding-top: 17px;">Post</a>
+                        <div class="dropdown-menu" style="background: rgba(255,255,255,0.45);"><a class="dropdown-item" href="/postVideo" style="color: #ffffff;background: rgba(255,255,255,0);">Post Video</a><a class="dropdown-item" href="/postArticle" style="color: #ffffff;">Post Article</a></div>
+                    </li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#contact" style="color: rgb(255,255,255);">cONTACT US</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#help" style="color: rgb(255,255,255);">HELP</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" sec:authorize="isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/logout" style="color: rgb(255,255,255);">LogOut</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/login" style="color: rgb(255,255,255);">Login</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div sec:authorize="isAuthenticated()">Bienvenido
+            <div sec:authentication="name"></div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-color: rgba(255,255,255,0);width: 100%;height: 981px;padding-top: 0px;padding-bottom: 0px;">
+        <div class="text-center intro-body" style="opacity: 1;background-image: url(&quot;/img/bg-masthead.jpg&quot;);width: 521px;">
+            <div class="caption v-middle text-center">
+                <h1 class="cd-headline clip">
+                    <span style="font-family: Aldrich, sans-serif;font-size: 100px " class="blc">CYBER</span>
+                    <span class="cd-words-wrapper">
+                  <b style="font-family: Aldrich, sans-serif;font-size: 100px ;margin-top:7px;" class="is-visible">TUBE</b>
+                  <b style="font-family: Aldrich, sans-serif;font-size: 100px;margin-top:7px; ">SECURITY</b>
+                </span>
+                    <span class="blinking">|</span>
+                </h1>
+            </div>
+        </div>
+    </header>
+    <div id="videos" class="article-list" style="color: rgb(255,255,255);background: rgb(0,0,0);">
+        <div class="container" id="videos" style="margin-top: 53px;margin-bottom: 200px;">
+            <div class="intro">
+                <h2 class="text-center">Latest videos</h2>
+            </div>
+            <div class="row articles" style="padding-bottom: -23px;" :>
+                <div th:each="video:${videos}" class="col-sm-6 col-md-4 item" style="height: 356px;padding-top: 11px;margin-bottom: -37px;">
+                    <a th:href="'/video/'+${video.videoID}"><img class="img-fluid" th:src="'https://img.youtube.com/vi/'+${video.videoThumbnail}+'/0.jpg'"></a>
+                    <h3 class="name" style="margin-bottom: -5px;" th:utext="${video.videoTitle}">Video 1</h3>
+                    <p class="description" style="color: rgb(245,245,245);font-family: Aldrich, sans-serif;" th:utext="${video.videoAuthor}">by AuthorName</p>
+                    </i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="row articles" style="padding-left: 90px;height: 85px;">
+                <div class="col" style="height: 57px;">
+                    <a class="d-xl-flex justify-content-xl-end" href="/videos" style="text-align: right;width: 100%;margin-left: -0px;font-size: 19px;font-family: Aldrich, sans-serif;color: rgb(255,255,255);line-height: 34px; ">More Videos</a>
+                </div>
+            </div>
+            <div id="articles" class="article-list" style="color: rgb(255,255,255);background: rgba(0,0,0,0.3);">
+                <div class="container" style="margin-top: 53px;">
+                    <div class="intro">
+                        <h2 class="text-center">Latest articles</h2>
+                    </div>
+                    <div class="row articles" style="padding-left: 20px;height: 259px;padding-right: 20px;" th:each="article:${articles}">
+                        <div class="col" style="font-family: Aldrich, sans-serif;font-size: 39px;padding-left: 0px;margin-bottom:20px"><a th:href="'/article/'+${article.articleID}" style="font-family: Aldrich, sans-serif;color: rgb(255,255,255);" th:utext="${article.articleTitle}">Title 1</a></div>
+                        <p class="description" style="color: rgb(245,245,245);font-family: Aldrich, sans-serif;font-size: 12px;width: 100%;margin-left: 3px;margin-top:-20px" th:utext="${article.articleDate}">30/12/2020</p>
+                        <p class="description" style="color: rgb(245,245,245);font-family: Aldrich, sans-serif;width: 30%;margin-top: -10px;padding-left: 0px;font-size:12pt" th:utext="${article.articleAuthor}">AuthorName1</p>
+                        <p class="description" style="color: rgb(245,245,245);font-family: Aldrich, sans-serif;width: 100%;margin-top: -24px;padding-left: 0px;" th:utext="${article.articleDescription}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis diam ipsum. Integer justo urna, consectetur ac elit sed, fermentum tincidunt libero.<br></p>
+                    </div>
+
+                    <div class="row articles" style="padding-left: 90px;height: 85px;">
+                        <div class="col" style="height: 57px;">
+                            <a class="d-xl-flex justify-content-xl-end" href="/articles" style="text-align: right;width: 100%;margin-left: -0px;font-size: 19px;font-family: Aldrich, sans-serif;color: rgb(255,255,255);line-height: 34px; ">More Articles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section id="help" class="content-section text-center" style="padding-top: 115px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <h2>AYUDA</h2>
+                            <p>Visita nuestra página de ayuda para una mejor experiencia de navegación :)</p>
+                            <ul class="list-inline banner-social-buttons">
+                                <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><a href="/help">HELP</a></button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="content-section text-center" style="padding-top: 115px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <h2>Contact us</h2>
+                            <p>Si crees que algo debe cambiar no dudes en contactar con nosotros :D </p>
+                            <ul class="list-inline banner-social-buttons">
+                                <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" onclick ="window.location='https://instagram.com/coronaware.cybertube'" type="button"><i class="ion-social-instagram"></i><span class="network-name">&nbsp; INSTAGRAM</span></button></li>
+                                <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" onclick ="window.location='https://twitter.com/CyberTube6'"  type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="footer-basic" style="margin-right: 0px;width: 100%;margin-top: 41px;background: rgb(255,255,255);color: rgb(255,255,255);height: 85px;min-width: -2px;padding-bottom: -12px;padding-top: -57px;">
+                <footer style="background: #000000;font-family: Aldrich, sans-serif;height: 263px;padding-top: -61;padding-bottom: 28;margin-top: -43px;">
+                    <div class="social" style="color: rgb(255,255,255);"><a href="https://www.instagram.com/coronaware.cybertube"><i class="icon ion-social-instagram" style="color: #ffffff;"></i></a><a href="https://twitter.com/CyberTube6"><i class="icon ion-social-twitter"></i></a></div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="/">Home</a></li>
+                        <li class="list-inline-item"><a href="#">Services</a></li>
+                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="#">Terms</a></li>
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <p class="copyright">CoronaWare © 2020</p>
+                </footer>
+            </div>
+            <script src="/js/jquery.min.js"></script>
+            <script src="/bootstrap/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+            <script src="/js/script.min.js"></script>
+</body>
+
+</html>

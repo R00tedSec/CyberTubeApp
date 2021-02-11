@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - CyberTube</title>
+    <meta name="description" content="First Hacking Youtube">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+
+<body id="page-top" style="width: 100%;padding-top: -8px;padding-bottom: -2px;margin-bottom: -7px;margin-top: 5px;">
+    <nav class="navbar navbar-light navbar-expand-md text-capitalize navbar navbar-expand-lg fixed-top" id="mainNav" style="width: 100%;margin-top: -4px;margin-right: 2px;margin-bottom: -1px;padding-top: 22px;padding-bottom: 15px;">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#" style="font-family: Aldrich, sans-serif;"></a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+                <img src="/img/logo.png" style="width: 163px;">
+                <div class="collapse navbar-collapse text-uppercase" id="navbarResponsive-1" style="font-family: Aldrich, sans-serif;">
+                    <ul class="nav navbar-nav ml-auto" style="color: rgb(255,255,255);">
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')} or ${check} == true" href="/admin" style="color: rgb(255,255,255);">Admin Page</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" href="/profile" style="color: rgb(255,255,255);">Profile</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="/" style="font-family: Aldrich, sans-serif;background: rgba(0,0,0,0);">HOME</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/videos" style="color: rgb(255,255,255);">Videos</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/articles" style="color: rgb(255,255,255);">aRTICLES</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/#contact" style="color: rgb(255,255,255);">cONTACT US</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/help" style="color: rgb(255,255,255);">HELP</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger" sec:authorize="isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/logout" style="color: rgb(255,255,255);">LogOut</a></li>
+                        <li class="nav-item nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/login" style="color: rgb(255,255,255);">Login</a></li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <div style="width: 100%;background: #ffffff;margin-top: 88px;margin-bottom: -43px;padding-bottom: 72px;">
+        <div class="container">
+            <div class="row" style="border-top-width: 10px;width: 1139px;height: 364px;padding-top: -16px;padding-bottom: -52px;margin-bottom: -115px;margin-top: 5px;">
+                <div class="col-md-12" style="padding: -9px;padding-right: 0px;width: 100%;height: 291px;padding-top: -14px;padding-bottom: 0px;margin-bottom: -11px;margin-top: -89px;">
+                    <a href="#" style="font-family: Aldrich, sans-serif;font-size: 40px;color: rgb(16,177,114);padding-bottom: 0px;margin: -7px;margin-bottom: 0px;margin-top: 0px;padding-top: 0px;border-color: rgb(86,88,91);height: -4px;width: -3px;"><br><br><strong>AYUDA Y GUÍA DE USO&nbsp;</strong><br><br></a>
+                    <p style="color: rgb(0,0,0);">Aquí podrás encontrar una ayuda para realizar las diferentes funciones que ofrece la página.</p>
+                    <div class="btn-toolbar">
+                        <div class="btn-group" role="group"></div>
+                        <div class="btn-group" role="group"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width: 100%;">
+                <div class="col" style="margin-top: -116px;">
+                    <a href="#" style="font-family: Aldrich, sans-serif;font-size: 40px;color: rgb(16,177,114);padding-bottom: 0px;margin: -7px;margin-bottom: 0px;margin-top: 0px;padding-top: 0px;border-color: rgb(86,88,91);height: -4px;width: -3px;"><br><br><strong>COMO AÑADIR UN ARTÍCULO&nbsp;</strong><br><br></a>
+                    <p style="color: rgb(0,0,0);">Para añadir un artículo vamos a la barra superior de la página, y clickamos en el menú desplegable "post", ahí seleccionamos "post article", nos llevará a una página con un formulario para rellenar y subir nuestro artículo a la página
+                        (También puedes acceder directamente desde&nbsp;<a href="/postArticle">Este link</a>).</p>
+                </div>
+            </div><img src="/img/Captura.png"><img src="/img/2.png">
+            <p style="color: rgb(0,0,0);">Lo único que tendremos que hacer será rellenar los campos con el título, descripción, autor, y por último el contenido (en texto) del artículo. Luego le damos al botón verde de "send" y se nos subirá el artículo que hayamos creado con su fecha
+                de creación también.</p>
+            <div class="row" style="width: 100%;">
+                <div class="col" style="margin-top: -116px;">
+                    <a href="#" style="font-family: Aldrich, sans-serif;font-size: 40px;color: rgb(16,177,114);padding-bottom: 0px;margin: -7px;margin-bottom: 0px;margin-top: 0px;padding-top: 0px;border-color: rgb(86,88,91);height: -4px;width: -3px;"><br><br><strong>COMO AÑADIR UN VÍDEO&nbsp;</strong><br><br></a>
+                    <p style="color: rgb(0,0,0);">El proceso es prácticamente igual a añadir un artículo. Vamos a la barra superior de la página, y clickamos en el menú desplegable "post", ahí seleccionamos "post video" esta vez, nos llevará a una página con un formulario para rellenar
+                        y subir nuestro vídeo a la página (También puedes acceder directamente desde&nbsp;<a href="/postVideo">Este link</a>).</p><img src="/img/Captura.png"><img src="/img/3.png">
+                    <p style="color: rgb(0,0,0);">Lo único que tendremos que hacer será rellenar los campos del formulario con el título del vídeo, su autor y la URL del vídeo (para que se reproduzca en nuestra página), le damos al botón verde "send" y se subirá el vídeo a la página
+                        con su fecha de creación correspondiente.</p>
+                </div>
+            </div>
+            <div class="row" style="width: 100%;">
+                <div class="col" style="margin-top: -116px;">
+                    <a href="#" style="font-family: Aldrich, sans-serif;font-size: 40px;color: rgb(16,177,114);padding-bottom: 0px;margin: -7px;margin-bottom: 0px;margin-top: 0px;padding-top: 0px;border-color: rgb(86,88,91);height: -4px;width: -3px;"><br><br><strong>COMO NAVEGAR POR LA PÁGINA&nbsp;</strong><br><br></a>
+                    <p style="color: rgb(0,0,0);">Como podemos ver la barra superior nos ofrece el acceso a todo lo que contiene la página, si queremos ir a la página de artículos no hay más que clicar en "articles" Y dentro veremos una lista con los diferentes artículos sobre los
+                        que podemos pinchar y verlos en profunidad.</p><img src="/img/4.png">
+                    <p style="color: rgb(0,0,0);">También podemos acceder a los&nbsp;<a href="/videos">vídeos desde aquí</a>. Y a los&nbsp;&nbsp;<a href="/articles">artículos desde aquí</a>.</p>
+                    <p style="color: rgb(0,0,0);">Si fuéramos al apartado home, bajando un poco nos aparecerían los 3 últimos vídeos y los 3 últimos artículos que han sido subidos más recientemente. Además abajo del todo de la página nos aparece información adicional además de nuestras
+                        redes sociales.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-basic" style="margin-right: 0px;width: 100%;margin-top: 41px;background: rgb(255,255,255);color: rgb(255,255,255);height: 85px;min-width: -2px;padding-bottom: -12px;padding-top: -57px;">
+        <footer style="background: #000000;font-family: Aldrich, sans-serif;height: 263px;padding-top: -61;padding-bottom: 28;margin-top: -43px;">
+            <div class="social" style="color: rgb(255,255,255);"><a href="https://www.instagram.com/coronaware.cybertube"><i class="icon ion-social-instagram" style="color: #ffffff;"></i></a><a href="https://twitter.com/CyberTube6"><i class="icon ion-social-twitter"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">CoronaWare © 2020</p>
+        </footer>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/js/script.min.js"></script>
+</body>
+
+</html>

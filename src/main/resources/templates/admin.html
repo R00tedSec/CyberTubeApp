@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CyberTube</title>
+    <meta name="description" content="First Hacking Youtube">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/ionicons.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+
+<body>
+    <div class="d-flex flex-column" id="content-wrapper"></div>
+    <div class="article-clean" style="width: 100%;margin-top: 87px;">
+        <div class="container-fluid">
+            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2" style="text-align: center;">
+                <h1 style="padding-top: 30px;">ADmin Page</h1>
+                <div class="text">
+                    <figure></figure>
+                </div>
+            </div>
+            <div class="col offset-1" style="margin: 3px;margin-left: -30px;">
+                <div class="row">
+                    <div class="col offset-1 align-self-start">
+                        <div class="card text-center shadow mb-4" style="width: 516px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Users</h6>
+                                <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+                                    <div class="container"><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive-1" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+                                        <img src="img/logo.png" style="width: 163px;">
+                                        <div class="collapse navbar-collapse text-uppercase" id="navbarResponsive-1" style="font-family: Aldrich, sans-serif;">
+                                            <ul class="nav navbar-nav ml-auto" style="color: rgb(255,255,255);">
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="/" style="font-family: Aldrich, sans-serif;background: rgba(0,0,0,0);">HOME</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" href="/profile" style="color: rgb(255,255,255);">Profile</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/videos" style="color: rgb(255,255,255);">Videos</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/articles" style="color: rgb(255,255,255);">aRTICLES</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/#contact" style="color: rgb(255,255,255);">cONTACT US</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="/help" style="color: rgb(255,255,255);">HELP</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger" sec:authorize="isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/logout" style="color: rgb(255,255,255);">LogOut</a></li>
+                                                <li class="nav-item nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"><a class="nav-link js-scroll-trigger" href="/login" style="color: rgb(255,255,255);">Login</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div th:each="user : ${user}" class="row no-gutters" >
+                                        <div class="col align-self-center" style="width: 368px;">
+                                            <h6 th:utext="${user.username}" style="color: rgb(0,0,0);width: 415px;height: 0 px;margin-bottom: 0px;">Usuario 1</h6>
+                                            
+                                        </div>                                                               
+                                        <div class="col" style="margin-left: 33px;"><a th:href=" '/user/deleteUser/'+${user.username}" class="btn btn-primary text-right" role="button" style="margin-top: 7px;margin-left: 0px;margin-bottom: 7px;padding-top: 7px;">❌<br></a></div>
+                                    </div>
+                                    ⚠️CUIDADO CON BORRAR EL ADMIN⚠️
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-break mb-4" style="width: 642px;">
+                            <div  class="card-header py-3">
+                                <h6  class="text-primary font-weight-bold m-0">videos posted</h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div th:each="video : ${video}" class="row no-gutters">
+                                        <div class="col align-self-center">
+                                            <h6 th:utext="${video.videoTitle}" style="color: rgb(0,0,0);width: 415px;height: 0 px;margin-bottom: 0px;">tITULO VIDEO&nbsp; 1</h6>
+                                        </div>
+                                        <div class="col" style="margin-left: 33px;"><a th:href=" '/video/updateVideo/'+${video.videoID}" class="btn btn-primary text-right" role="button" style="margin-top: 7px;margin-left: 0px;margin-bottom: 7px;padding-top: 7px;margin-right: 17px;">✏️<br></a><a th:href=" '/video/deleteVideo/'+${video.videoID}" class="btn btn-primary text-right" role="button"
+                                                style="margin-top: 7px;margin-left: 0px;margin-bottom: 7px;padding-top: 7px;">❌<br></a></div>
+                                    </div>
+                                    
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4" style="width: 642px;">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Articles posted</h6>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div th:each="article : ${article}" class="row no-gutters">
+                                        <div class="col align-self-center">
+                                            <h6 th:utext="${article.articleTitle}" style="color: rgb(0,0,0);width: 415px;height: 0 px;margin-bottom: 0px;">tITULO Articulo&nbsp; 1</h6>
+                                        </div>
+                                        <div class="col" style="margin-left: 33px;"><a th:href=" '/article/updateArticle/'+${article.articleID}" class="btn btn-primary text-right" role="button" style="margin-top: 7px;margin-left: 0px;margin-bottom: 7px;padding-top: 7px;margin-right: 17px;">✏️<br></a><a th:href=" '/article/deleteArticle/'+${article.articleID}" class="btn btn-primary text-right" role="button"
+                                                style="margin-top: 7px;margin-left: 0px;margin-bottom: 7px;padding-top: 7px;">❌<br></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-basic" style="margin-right: 0px;width: 100%;margin-top: 41px;background: rgb(255,255,255);color: rgb(255,255,255);height: 85px;min-width: -2px;padding-bottom: -12px;padding-top: -57px;">
+        <footer style="background: #000000;font-family: Aldrich, sans-serif;height: 263px;padding-top: -61;padding-bottom: 28;margin-top: -43px;">
+            <div class="social" style="color: rgb(255,255,255);"><a href="https://www.instagram.com/coronaware.cybertube"><i class="icon ion-social-instagram" style="color: #ffffff;"></i></a><a href="https://twitter.com/CyberTube6"><i class="icon ion-social-twitter"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">CoronaWare © 2020</p>
+        </footer>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="js/script.min.js"></script>
+</body>
+
+</html>
